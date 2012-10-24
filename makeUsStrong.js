@@ -1,5 +1,8 @@
 function makeUsStrong() {
-    var strengthener = window.getSelection();
+    var strengthener = null;
+    if (typeof window.getSelection != "undefined") {
+        strengthener = window.getSelection().toString();
+    }
     if (!strengthener) {
         strengthener = prompt('What will make us strong?'); 
     }
