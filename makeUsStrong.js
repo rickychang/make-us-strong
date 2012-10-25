@@ -31,12 +31,10 @@ function resizeImageURL(imageURL, width) {
 }
 
 function logInMixPanel(whatMakesUsStrong, httpRequest) {
-    var remoteIp = httpRequest.headers['X-Real-IP'];
+    var remoteIp = httpRequest.headers['x-forwarded-for'];
     if (!remoteIp) {
         remoteIp = httpRequest.connection.remoteAddress;
     }
-    console.log(httpRequest.headers['X-Real-IP']);
-    console.log(httpRequest.connection.remoteAddress);
     mixpanel.track("view", {
         distinct_id: remoteIp,
         strengthener: whatMakesUsStrong
