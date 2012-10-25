@@ -6,7 +6,7 @@ var fs = require('fs');
 function extractStrengthener(hostname) {
     var strengthener = null;
     if (hostname) {
-        strengthener = hostname.split(":")[0].split(".")[0].replaceAll(/-/g," ").toUpperCase()
+        strengthener = hostname.split(":")[0].split(".")[0].replace(/-/g," ").toUpperCase()
     }
     return strengthener;
 };
