@@ -44,8 +44,7 @@ http.createServer(function (request, response) {
         response.write('</body></html>');
         response.end();
     }
-    console.log(request.headers.host);
-    console.log('request starting...');
+    console.log(whatMakesUsStrong);
      
     
      
