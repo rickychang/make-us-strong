@@ -26,6 +26,14 @@ function extractStrengthener(hostname) {
     return strengthener;
 };
 
+function extractCaptions(hostname) {
+    var captions = [];
+    if (hostname) {
+        captions = hostname.replace(/-/g, " ").toUpperCase().split(":")[0].split(".").slice(0,2);
+	    }
+    return captions;
+};
+
 function resizeImageURL(imageURL, width) {
     return imageURL.replace(/400x/, width + 'x');
 }
@@ -42,11 +50,13 @@ function logInMixPanel(whatMakesUsStrong, httpRequest) {
 };
  
 http.createServer(function (httpRequest, httpResponse) {
-    var whatMakesUsStrong = extractStrengthener(httpRequest.headers.host)
-    if (whatMakesUsStrong) {
-        console.log(whatMakesUsStrong + " : " + new Date());
-        logInMixPanel(whatMakesUsStrong, httpRequest);
-        var memeGeneratorApiURL = 'http://version1.api.memegenerator.net/Instance_Create?username=pakledSOS&password=engage&languageCode=en&generatorID=1568864&imageID=6447360&text0=' + encodeURI(whatMakesUsStrong) + '&text1=makes%20us%20strong';
+    var captions = extractCaptions(httpRequest.headers.host);
+    if (captions) {
+        var caption1 = captions[0];
+        var caption2 = captions[1];
+        console.log(caption1 + " : " + new Date());
+        logInMixPanel(caption1, httpRequest);
+        var memeGeneratorApiURL = 'http://version1.api.memegenerator.net/Instance_Create?username=pakledSOS&password=engage&languageCode=en&generatorID=1568864&imageID=6447360&text0=' + encodeURI(caption1) + '&text1=' + encodeURI(caption2);
         var randSound = trekSounds[Math.floor(Math.random() * trekSounds.length)]
         request(memeGeneratorApiURL, function (error, memeResponse, body) {
             if (!error && memeResponse.statusCode == 200) {
@@ -54,7 +64,7 @@ http.createServer(function (httpRequest, httpResponse) {
                     httpResponse.writeHead(200, { 'Content-Type': 'text/html' });
                     httpResponse.write('<!DOCTYPE html><html lang="en"><head>');
                     httpResponse.write('<meta charset="utf-8">');
-                    httpResponse.write('<title>' + whatMakesUsStrong + ' MAKES US STRONG</title>');
+                    httpResponse.write('<title>' + caption1 + ' ' + caption2 + ' MAKES US STRONG</title>');
                     httpResponse.write('</head><body bgcolor="#000000">');
                     httpResponse.write('<img src="' + memeImageURL + '"/>');
                     httpResponse.write('<audio src="' + randSound + '" autoplay="true" autobuffer></audio>');
