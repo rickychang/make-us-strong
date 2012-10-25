@@ -32,7 +32,7 @@ function resizeImageURL(imageURL, width) {
 
 function logInMixPanel(whatMakesUsStrong, httpRequest) {
     mixpanel.track("view", {
-        distinct_id: httpRequest.connection.remoteAddress,
+        distinct_id: httpRequest.headers['X-Forwarded-For'],
         strengthener: whatMakesUsStrong
     });
 };
