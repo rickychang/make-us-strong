@@ -101,6 +101,8 @@ http.createServer(function (httpRequest, httpResponse) {
                         httpResponse.write('<title>' + caption1 + ' ' + caption2 + ' MAKES US STRONG</title>');
                         httpResponse.write('</head><body bgcolor="#000000">');
                         httpResponse.write('<img src="' + memeImageURL + '"/>');
+                        httpResponse.write('<p><a style="font-size: 16pt; color: white" href="' + "javascript:(function()%7Bvar%20strengthener%20%3D%20prompt(%22What%20will%20make%20us%20strong%3F%22)%3Bvar%20newLocation%20%3D%20window.location.host.split('.')%3Bconsole.log(newLocation)%3Bconsole.log(strengthener)%3BnewLocation%5B0%5D%20%3D%20strengthener.replace(%2F%20%2Fg%2C'-')%3Bconsole.log(%22http%3A%2F%2F%22%20%2B%20newLocation.join('.'))%3Bwindow.open(%22http%3A%2F%2F%22%20%2B%20newLocation.join('.'))%7D)()" + '">' + 'Respond to the Pakled hail?' + '</a></p>'); 
+                        httpResponse.write('<p><a href="https://mixpanel.com/f/partner"><img src="//cdn.mxpnl.com/site_media/images/partner/badge_light.png" alt="Mobile Analytics" /></a></p>');
                         httpResponse.write('<audio src="' + randSound + '" autoplay="true" autobuffer></audio>');
                         httpResponse.write('</body></html>');
                         httpResponse.end();
