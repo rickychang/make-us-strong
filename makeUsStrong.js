@@ -6,7 +6,7 @@ var fs = require('fs');
 function extractStrengthener(hostname) {
     var strengthener = null;
     if (hostname) {
-        strengthener = hostname.split(":")[0].split(".")[0].replace("-"," ").toUpperCase()
+        strengthener = hostname.split(":")[0].split(".")[0].replaceAll(/-/g," ").toUpperCase()
     }
     return strengthener;
 };
@@ -17,7 +17,6 @@ http.createServer(function (httpRequest, httpResponse) {
     if (whatMakesUsStrong) {
         console.log(whatMakesUsStrong);
         var memeGeneratorApiURL = 'http://version1.api.memegenerator.net/Instance_Create?username=pakledSOS&password=engage&languageCode=en&generatorID=1568864&imageID=6447360&text0=' + encodeURI(whatMakesUsStrong) + '&text1=makes%20us%20strong';
-        console.log(memeGeneratorApiURL);
         request(memeGeneratorApiURL, function (error, memeResponse, body) {
             if (!error && memeResponse.statusCode == 200) {
                     var memeImageUrl = JSON.parse(body)['result']['instanceImageUrl']
@@ -27,12 +26,6 @@ http.createServer(function (httpRequest, httpResponse) {
                     httpResponse.write('<title>' + whatMakesUsStrong + ' MAKES US STRONG</title>');
                     httpResponse.write('</head><body bgcolor="#000000">');
                     httpResponse.write('<img src="' + memeImageUrl + '"/>');
-                    httpResponse.write('<object><param name="autostart" value="true">')
-                    httpResponse.write('<param name="src" value="http://www.trekcore.com/audio/computer/computerbeep_67.mp3">')
-                    httpResponse.write('<param name="autoplay" value="true">')
-                    httpResponse.write('<param name="controller" value="false">')
-                    httpResponse.write('<embed src="http://www.trekcore.com/audio/computer/computerbeep_67.mp3" controller="false" autoplay="true" autostart="True"/>')
-                    httpResponse.write('</object>')
                     httpResponse.write('</body></html>');
                     httpResponse.end();
             }
