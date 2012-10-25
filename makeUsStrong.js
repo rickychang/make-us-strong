@@ -13,12 +13,10 @@ function extractStrengthener(hostname) {
 
 var trekSounds = [
 'http://www.trekcore.com/audio/computer/sequences/astrometrics_controls.mp3',
-'http://www.trekcore.com/audio/computer/energize.mp3',
 'http://www.trekcore.com/audio/computer/hailbeep_clean.mp3', 
 'http://www.trekcore.com/audio/computer/computerbeep_69.mp3', 
 'http://www.trekcore.com/audio/computer/computerbeep_37.mp3',
 'http://www.trekcore.com/audio/computer/computer_work_beep.mp3',
-'http://www.trekcore.com/audio/computer/critical.mp3',
 'http://www.trekcore.com/audio/computer/processing2.mp3',
 'http://www.trekcore.com/audio/computer/scrscroll2.mp3',
 'http://www.trekcore.com/audio/computer/sequences/tactical_beep_sequence.mp3'
