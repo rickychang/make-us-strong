@@ -31,8 +31,14 @@ function resizeImageURL(imageURL, width) {
 }
 
 function logInMixPanel(whatMakesUsStrong, httpRequest) {
+    var remoteIp = httpRequest.headers['X-Forwarded-For'];
+    if (!remoteIp) {
+        remoteIp = httpRequest.connection.remoteAddress;
+    }
+    console.log(httpRequest.headers['X-Forwarded-For']);
+    console.log(httpRequest.connection.remoteAddress);
     mixpanel.track("view", {
-        distinct_id: httpRequest.headers['X-Forwarded-For'],
+        distinct_id: remoteIp,
         strengthener: whatMakesUsStrong
     });
 };
