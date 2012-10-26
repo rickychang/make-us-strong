@@ -76,7 +76,7 @@ http.createServer(function (httpRequest, httpResponse) {
     if (captions) {
         var caption1 = captions[0];
         var caption2 = captions[1];
-        if (!caption1 || !caption2) {
+        if (!caption1 || !caption2 || caption2 == "com") {
             caption1 = randomStrengthener[Math.floor(Math.random() * randomStrengthener.length)];
             var randomRedirectURL = "http://" + caption1 + ".";
                 if (isNounPlural(caption1)) {
@@ -120,11 +120,11 @@ http.createServer(function (httpRequest, httpResponse) {
                             httpResponse.write('<title>' + caption1 + ' ' + caption2 + ' MAKES US STRONG</title>');
                             httpResponse.write('</head><body bgcolor="#000000">');
                             httpResponse.write('<div style="position: absolute; top: 50%; left: 0px; width: 100%; height: 1px; overflow: visible;">');
-                            httpResponse.write('<div style="width: 500px; height: 500px; margin-left: -250px; position: absolute; top: -250px; left: 50%;">');
+                            httpResponse.write('<div style="width: 500px; height: 500px; margin-left: -250px; position: absolute; top: -300px; left: 50%;">');
                             httpResponse.write('<img src="' + memeImageURL + '" height="500" width="500"/>');
-                            httpResponse.write('<p><center><a style="font-size: 16pt; color: white" href="' + "javascript:(function()%7Bvar%20strengthener%20%3D%20prompt(%22What%20will%20make%20us%20strong%3F%22)%3Bvar%20newLocation%20%3D%20window.location.host.split('.')%3Bconsole.log(newLocation)%3Bconsole.log(strengthener)%3BnewLocation%5B0%5D%20%3D%20strengthener.replace(%2F%20%2Fg%2C'-')%3Bconsole.log(%22http%3A%2F%2F%22%20%2B%20newLocation.join('.'))%3Bwindow.open(%22http%3A%2F%2F%22%20%2B%20newLocation.join('.'))%7D)()" + '">' + 'Respond to the Pakled hail?' + '</a></center></p>');
-                            httpResponse.write('<p><center><a style="font-size: 16pt; color: white" href="' + "http://en.memory-alpha.org/wiki/Pakled" + '">' + 'What?' + '</a></center></p>');
-                            httpResponse.write('<p><center><a href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-hashtags="makeusstrong">Tweet</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></center></p>');
+                            httpResponse.write('<p><<a style="font-size: 16pt; color: white" href="' + "javascript:(function()%7Bvar%20strengthener%20%3D%20prompt(%22What%20will%20make%20us%20strong%3F%22)%3Bvar%20newLocation%20%3D%20window.location.host.split('.')%3Bconsole.log(newLocation)%3Bconsole.log(strengthener)%3BnewLocation%5B0%5D%20%3D%20strengthener.replace(%2F%20%2Fg%2C'-')%3Bconsole.log(%22http%3A%2F%2F%22%20%2B%20newLocation.join('.'))%3Bwindow.open(%22http%3A%2F%2F%22%20%2B%20newLocation.join('.'))%7D)()" + '">' + 'Respond to the Pakled hail?' + '</a></p>');
+                            httpResponse.write('<p><<a style="font-size: 16pt; color: white" href="' + "http://en.memory-alpha.org/wiki/Pakled" + '">' + 'What?' + '</a></center></p>');
+                            httpResponse.write('<p><<a href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-hashtags="makeusstrong">Tweet</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></p>');
                             httpResponse.write('<audio src="' + randSound + '" autoplay="true" autobuffer></audio>');
                             httpResponse.write('</body></div></div></html>');
                             httpResponse.end();
