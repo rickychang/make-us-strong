@@ -117,7 +117,7 @@ http.createServer(function (httpRequest, httpResponse) {
                             httpResponse.writeHead(200, { 'Content-Type': 'text/html' });
                             httpResponse.write('<!DOCTYPE html><html lang="en"><head>');
                             httpResponse.write('<meta charset="utf-8">');
-                            httpResponse.write('<title>' + caption1 + ' ' + caption2 + ' MAKES US STRONG</title>');
+                            httpResponse.write('<title>' + caption1 + ' ' + caption2 + '</title>');
                             httpResponse.write('</head><body bgcolor="#000000">');
                             httpResponse.write('<div style="position: absolute; top: 50%; left: 0px; width: 100%; height: 1px; overflow: visible;">');
                             httpResponse.write('<div style="width: 500px; height: 500px; margin-left: -250px; position: absolute; top: -300px; left: 50%;">');
