@@ -66,17 +66,17 @@ function needsRandomRedirect(whatMakesUsStrong, domain) {
 }
 
 function redirect(response, whatMakesUsStrong) {
-    var redirectURL = "http://" + caption1 + ".";
+    var redirectURL = "http://" + whatMakesUsStrong + ".";
     if (isNounPlural(whatMakesUsStrong)) {
         redirectURL += pluralDomain + ".com";
     }
     else {
         redirectURL += singularDomain + ".com";
     }
-    httpResponse.writeHead(302, {
-        'Location': randomRedirectURL
+    response.writeHead(302, {
+        'Location': redirectURL
     });
-    httpResponse.end();
+    response.end();
 }
 
 // TODO: refactor this into multiple functions.  One for calling memegenerator API, another for actually writing response
