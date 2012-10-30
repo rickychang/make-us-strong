@@ -1,6 +1,5 @@
 var http = require('http');
-var request = require('request')
-var fs = require('fs');
+var request = require('request');
 var Mixpanel = require('mixpanel');
 var natural = require('natural');
 
@@ -15,7 +14,7 @@ var trekSounds = [
 'http://www.trekcore.com/audio/computer/sequences/tactical_beep_sequence.mp3'
 ];
 
-var randomStrengthener = ['shields', 'impulse-drive', 'warp-corp-breaches', 'www', 'kidnapping-your-chief-engineer', 'distress-signals'];
+var randomStrengtheners = ['shields', 'impulse-drive', 'warp-corp-breaches', 'www', 'kidnapping-your-chief-engineer', 'distress-signals'];
 
 var mptoken = 'ef5b291edf26ff71635e429f774314aa';
 var singularDomain = 'makes-us-strong';
@@ -126,7 +125,7 @@ http.createServer(function (httpRequest, httpResponse) {
         var caption1 = captions[0];
         var caption2 = captions[1];
         if (needsRandomRedirect(caption1, caption2)) {
-            caption1 = randomStrengthener[Math.floor(Math.random() * randomStrengthener.length)];
+            caption1 = randomStrengtheners[Math.floor(Math.random() * randomStrengtheners.length)];
             redirect(httpResponse, caption1);
             return;
         }
