@@ -39,12 +39,14 @@ function resizeImageURL(imageURL, width) {
 
 function logInMixPanel(whatMakesUsStrong, httpRequest) {
     var remoteIp = httpRequest.headers['x-forwarded-for'];
+    var referer = httpRequest.headers['referer'];
     if (!remoteIp) {
         remoteIp = httpRequest.connection.remoteAddress;
     }
     mixpanel.track("view", {
         distinct_id: remoteIp,
-        strengthener: whatMakesUsStrong
+        strengthener: whatMakesUsStrong,
+        referer: referer
     });
 }
 
